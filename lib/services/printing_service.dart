@@ -70,13 +70,11 @@ class PrintingService extends ChangeNotifier {
       }
 
       await SunmiPrinter.initPrinter();
-
       // 2. Start transaction once
       await SunmiPrinter.startTransactionPrint(true);
       await SunmiPrinter.lineWrap(1);
       Uint8List byte = await _getImageFromAsset(AppDrawables.printLogo);
       await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
-      await SunmiPrinter.startTransactionPrint(true);
       await SunmiPrinter.printImage(byte);
       await SunmiPrinter.lineWrap(1);
       await SunmiPrinter.printText(AppStrings.transactionReceipts);
