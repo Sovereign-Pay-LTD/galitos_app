@@ -125,7 +125,7 @@ class PrintingService extends ChangeNotifier {
         );
       }
 
-      if (data.tenderType == "03") {
+      if (data.tenderType == "02") {
         await SunmiPrinter.printRow(
           cols: [
             ColumnMaker(
