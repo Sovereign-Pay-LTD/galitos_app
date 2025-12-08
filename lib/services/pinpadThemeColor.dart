@@ -34,3 +34,5 @@ class PinpadThemeView extends ChangeNotifier {
     }
   }
 }
+
+// {"primary_color":"#000000","secondary_color":"#ffffff"}

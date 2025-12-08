@@ -52,6 +52,5 @@ class AppManager {
   Future<void> setDebug(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_debugKey, value);
-    print(value.toString());
   }
 }

@@ -5,6 +5,7 @@ import 'package:myshop_app/models/flowData.dart';
 import 'package:myshop_app/models/paymentTypeData.dart';
 import 'package:myshop_app/res/app_drawables.dart';
 import 'package:myshop_app/res/app_strings.dart';
+import 'package:myshop_app/res/app_theme.dart';
 import 'package:myshop_app/widgets/payment_card.dart';
 import 'package:provider/provider.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
@@ -182,7 +183,22 @@ paymentModal({
                           _paymentOptions(bloc),
 
                           /// CANCEL BUTTON
-                          _cancelButton(bloc, state),
+                      Padding(
+                          padding: EdgeInsets.all(ScreenSize().getScreenHeight(1)),
+                          child: InkWell(
+                              onTap: state is ProgressInitState || state is ProgressErrorState? () {
+                                Navigator.pop(bloc.sectionContext);
+
+                      } : () {AppUtil.toastMessage(message: AppStrings.processingPleaseWait);},
+                  child:state is ProgressInitState || state is ProgressErrorState? Btn(
+                    btn:   AppColors.primary,
+                    btnText: AppStrings.cancel,
+                  ):Btn(
+                    btn:  AppColors.primary.withValues(alpha: 0.3),
+                    btnText: AppStrings.cancel,
+                  ),
+                ),
+                )
                         ],
                       ),
                     ),
@@ -282,17 +298,5 @@ Widget _methodButton({
   );
 }
 
-Widget _cancelButton(ProgressBloc bloc, ProgressState state) {
-  return Padding(
-    padding: EdgeInsets.all(ScreenSize().getScreenHeight(1)),
-    child: InkWell(
-      onTap: bloc.busyState ? () {} : () => Navigator.pop(bloc.sectionContext),
-      child: Btn(
-        btn: bloc.busyState
-            ? AppColors.primary.withOpacity(0.5)
-            : AppColors.primary,
-        btnText: AppStrings.cancel,
-      ),
-    ),
-  );
-}
+
+

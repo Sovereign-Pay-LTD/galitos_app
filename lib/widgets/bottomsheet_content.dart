@@ -216,7 +216,7 @@ class SheetContent extends StatelessWidget {
                 ),
               ),
               Text(
-                Currency().format(
+                activeCurrency.symbol! + Currency().format(
                   decimal: activeCurrency.dp!,
                   rate: double.parse(activeCurrency.rate!),
                   amount: homeBloc.metaData.cartTotalAmount,

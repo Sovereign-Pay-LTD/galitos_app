@@ -44,47 +44,7 @@ class Currency {
     }
   }
 
-  // String format(String decimal, double rate, amount) {
-  //   print(amount);
-  //   if (decimal == '2') {
-  //     try {
-  //       var currencyFormat = NumberFormat(" #,##0.0#");
-  //       double newAmount = rate * double.parse(amount.toStringAsFixed(2));
-  //       //String newAmount = amount.toString();
-  //       if (newAmount == 0) {
-  //         return "0.00";
-  //       }
 
-  //       String formattedAmount = currencyFormat.format(newAmount);
-
-  //       return formattedAmount;
-  //     } catch (e) {
-  //       return "0.00";
-  //     }
-  //   } else if (decimal == '0') {
-  //     try {
-  //       var currencyFormat = NumberFormat(" #,###");
-  //       print(amount);
-  //       double newAmount = double.parse(amount.toString());
-  //       //String newAmount = amount.toString();
-  //       if (newAmount == 0) {
-  //         return "0";
-  //       }
-
-  //       String formattedAmount = currencyFormat.format(newAmount);
-
-  //       return formattedAmount;
-  //     } catch (e) {
-  //       return "0";
-  //     }
-  //   } else {
-  //     try {
-  //       var currencyFormat = NumberFormat(" #,##0.#");
-  //       double newAmount = double.parse(amount.toString());
-  //       //String newAmount = amount.toString();
-  //       if (newAmount == 0) {
-  //         return "0.0";
-  //       }
 
   //       String formattedAmount = currencyFormat.format(newAmount);
 

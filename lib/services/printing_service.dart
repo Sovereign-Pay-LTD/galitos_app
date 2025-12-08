@@ -109,31 +109,19 @@ class PrintingService extends ChangeNotifier {
           '${data.paymentData?.name}');
 
       if (data.tenderType == "01") {
-        await SunmiPrinter.printRow(
-          cols: [
-            ColumnMaker(
-                text: "${AppStrings.card
-                } ${AppStrings.number}", width: 23, align: SunmiPrintAlign.LEFT),
-            ColumnMaker(
-                text:
-                    "${apiResponse['PAN']??'12345678908764'.substring(0, 4)} **** **** ${apiResponse['PAN']??'12345678908764'.substring(apiResponse['PAN']??'12345678908764'.length - 4)}",
-                width: 24,
-                align: SunmiPrintAlign.RIGHT),
-          ],
+        await SunmiPrinter.printText(
+          // ignore: prefer_interpolation_to_compose_strings
+            "${AppStrings.card} ${AppStrings.number}:"
+                '${data.paymentData?.name}'
+                "${apiResponse['PAN']??'12345678908764'.substring(0, 4)} **** **** ${apiResponse['PAN']??'12345678908764'.substring(apiResponse['PAN']??'12345678908764'.length - 4)}"
         );
       }
 
       if (data.tenderType == "02") {
-        await SunmiPrinter.printRow(
-          cols: [
-            ColumnMaker(
-                text: "${AppStrings.mobile} ${AppStrings.number}", width: 23, align: SunmiPrintAlign.LEFT),
-            ColumnMaker(
-                text: '${apiResponse['PAN']??'0542134356'}',
-                width: 24,
-                align: SunmiPrintAlign.RIGHT),
-          ],
-        );
+        await SunmiPrinter.printText(
+          // ignore: prefer_interpolation_to_compose_strings
+            "${AppStrings.mobile} ${AppStrings.number}:" '${apiResponse['PAN']??'0542134356'}');
+
       }
       await SunmiPrinter.line(len: 48);
       await SunmiPrinter.printRow(cols: [
@@ -196,11 +184,9 @@ class PrintingService extends ChangeNotifier {
       /// Receipt Footer
 
       await SunmiPrinter.lineWrap(1);
-
       await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
       await SunmiPrinter.printQRCode("${AppStrings.orderNo}${data.cartTotalAmount}");
       await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
-
       await SunmiPrinter.lineWrap(1);
       await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER); // Center align
       await SunmiPrinter.printText(AppStrings.thankYouForChoosingMyShop);

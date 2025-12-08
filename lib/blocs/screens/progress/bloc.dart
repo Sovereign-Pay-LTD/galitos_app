@@ -32,8 +32,7 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
   ProgressBloc() : super(ProgressInitState()) {
     // ---------------- ProgressSubmitEvent ----------------
     on<ProgressSubmitEvent>((event, emit) async {
-      emit(ProgressInitState(isLoading: false));
-      busyState = true;
+      busyState = false;
       String ipaddress = await AppManager().getIPAddress();
       bool isDebugMode = await AppManager().getDebug();
       CountryData activeCurrency = CountryManager().activeCountry;
@@ -42,6 +41,7 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
       progressInfo.paymentData ??= PaymentData();
 
       if (!isDebugMode) {
+        busyState = true;
         try {
           Request requestBody = Request(
             messageType: "0200",
