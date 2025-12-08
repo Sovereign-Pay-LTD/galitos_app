@@ -82,7 +82,7 @@ class PrintingService extends ChangeNotifier {
       await SunmiPrinter.setCustomFontSize(28);
       await SunmiPrinter.line(len: 48);
       await SunmiPrinter.printText(
-          "${AppStrings.authCode}:${apiResponse['PAN']}");
+          "${AppStrings.transactionID}:${data.transactionID}");
       await SunmiPrinter.setAlignment(SunmiPrintAlign.LEFT);
       await SunmiPrinter.setCustomFontSize(28);
       await SunmiPrinter.printText(

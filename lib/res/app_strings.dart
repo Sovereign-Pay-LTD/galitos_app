@@ -35,6 +35,7 @@ class AppStrings {
   static const String  name = "Name";
   static const String  number = 'Number';
   static const String  transactionReceipts = "Transaction Receipts";
+  static const String  transactionID = "Transaction ID";
   static const String  authCode = "Auth. Code";
   static const String  referenceNum = "Reference No:";
   static const String  orderNo = "Order No:";
