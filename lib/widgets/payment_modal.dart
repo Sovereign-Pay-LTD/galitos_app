@@ -183,22 +183,38 @@ paymentModal({
                           _paymentOptions(bloc),
 
                           /// CANCEL BUTTON
-                      Padding(
-                          padding: EdgeInsets.all(ScreenSize().getScreenHeight(1)),
-                          child: InkWell(
-                              onTap: state is ProgressInitState || state is ProgressErrorState? () {
-                                Navigator.pop(bloc.sectionContext);
-
-                      } : () {AppUtil.toastMessage(message: AppStrings.processingPleaseWait);},
-                  child:state is ProgressInitState || state is ProgressErrorState? Btn(
-                    btn:   AppColors.primary,
-                    btnText: AppStrings.cancel,
-                  ):Btn(
-                    btn:  AppColors.primary.withValues(alpha: 0.3),
-                    btnText: AppStrings.cancel,
-                  ),
-                ),
-                )
+                          Padding(
+                            padding: EdgeInsets.all(
+                              ScreenSize().getScreenHeight(1),
+                            ),
+                            child: InkWell(
+                              onTap:
+                                  state is ProgressInitState ||
+                                      state is ProgressErrorState
+                                  ? () {
+                                      Navigator.pop(bloc.sectionContext);
+                                    }
+                                  : () {
+                                      AppUtil.toastMessage(
+                                        message:
+                                            AppStrings.processingPleaseWait,
+                                      );
+                                    },
+                              child:
+                                  state is ProgressInitState ||
+                                      state is ProgressErrorState
+                                  ? Btn(
+                                      btn: AppColors.primary,
+                                      btnText: AppStrings.cancel,
+                                    )
+                                  : Btn(
+                                      btn: AppColors.primary.withValues(
+                                        alpha: 0.3,
+                                      ),
+                                      btnText: AppStrings.cancel,
+                                    ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -297,6 +313,3 @@ Widget _methodButton({
     ),
   );
 }
-
-
-
