@@ -17,9 +17,7 @@ class PinpadThemeView extends ChangeNotifier {
       try {
         final url = Uri.parse('http://$ipaddress:8080/v1/colour/');
         final response = await http.post(url,
-            body: jsonEncode(<String, dynamic>{
-              "index": "3",
-            }),
+            body: jsonEncode(<String, dynamic>{"primary_color":"#2ECC71","secondary_color":"#ffffff"}),
             headers: <String, String>{
               'Content-Type': 'application/json',
               'Accept': 'application/json',
@@ -35,4 +33,3 @@ class PinpadThemeView extends ChangeNotifier {
   }
 }
 
-// {"primary_color":"#000000","secondary_color":"#ffffff"}
